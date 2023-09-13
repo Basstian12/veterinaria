@@ -36,7 +36,7 @@
             <li class="nav-item mt-5 rounded-pill sign-out">
                 <a class="nav-link link-light text-center fw-bold" href="../../../index.php">
                     <i class="bi bi-caret-left"></i>
-                    SALIR
+                    CERRAR
                 </a>
             </li>
         </ul>
