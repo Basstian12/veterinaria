@@ -20,12 +20,12 @@
                     MASCOTAS
                 </a>
             </li>
-            <!-- <li class="nav-item mb-2">
+            <li class="nav-item mb-2">
                 <a class="nav-link link-dark" href="#">
                     <i class="fas fa-clock"></i>
                     HISTORIAL
                 </a>
-            </li> -->
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link link-dark" href="../vacunas/vacunas.php">
