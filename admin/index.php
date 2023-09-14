@@ -18,7 +18,7 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header fw-bold text-center bg-dark text-light">
-                        HUELLITAS
+                        VETERINARIA HUELLITAS
                     </div>
                     <div class="card-body">
 
