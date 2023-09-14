@@ -22,7 +22,7 @@
             </li>
             <li class="nav-item mb-2">
                 <a class="nav-link link-dark" href="#">
-                    <i class="fas fa-clock"></i>
+                    <i class="fas fa-calendar-alt"></i>
                     CITAS
                 </a>
             </li>
