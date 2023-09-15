@@ -1,3 +1,34 @@
+<?php
+include('../../config/database.php');
+
+session_start();
+
+if (isset($_SESSION['user_id'])) {
+
+    $user_id = $_SESSION['user_id'];
+    $sql = "SELECT * FROM veterinarios WHERE id = '$user_id'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Obtener los datos del usuario
+        $row = $result->fetch_assoc();
+
+        $nombre = $row['nombre'];
+        $correo = $row['correo'];
+
+        // Mostrar los datos del usuario
+
+
+    } else {
+        echo "Usuario no encontrado.";
+    }
+} else {
+    echo "<script>
+    alert('Por favor inicie sesion');
+    window.location.href='../../../index.php';
+    </script>";
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -32,16 +63,36 @@
 
     <div class="container-fluid">
         <div class="row">
-            <?php 
+            <?php
 
             require('../nav.php');
 
+            ?>
+            <?php
+
+
+
+            $userId = $_SESSION['user_id'];
+            // Consulta SQL para obtener los datos del usuario por su ID
+            $sql = "SELECT * FROM veterinarios WHERE id = $userId";
+            // Asegúrate de adaptar la tabla y los campos según tu base de datos.
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                // El usuario fue encontrado en la base de datos
+                $userData = $result->fetch_assoc();
+
+                // Ahora $userData contiene los datos del usuario
+
+            } else {
+                // El usuario no fue encontrado en la base de datos
+                echo "Usuario no encontrado.";
+            }
             ?>
 
             <!-- Contenido Principal -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2 text-dark">Binvenido Dr. Viko Gomez</h1>
+                    <h1 class="h2 text-dark">Bienvenido <?php echo $userData['nombre'], $userData['apellidos']; ?> </h1>
                 </div>
                 <!-- Aquí va el contenido de la página -->
 

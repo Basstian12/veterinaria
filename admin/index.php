@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login_Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -21,8 +21,13 @@
                         HUELLITAS
                     </div>
                     <div class="card-body">
+                        <?php if (isset($_GET['error'])) { ?>
+                            <div class="alert alert-danger" id="myAlert">
+                                <p>Hubo un error al ingresar, Verifique sus datos porfavor</p>
+                            </div>
+                        <?php } ?>
 
-                        <form action="src/views/clientes/clientes.php">
+                        <form action="src/config/login.php" method="POST">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Correo Electrónico</label>
                                 <div class="input-group">
@@ -48,6 +53,16 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Obtener la alerta
+        var alert = document.getElementById("myAlert");
+
+        // Ocultar la alerta después de 5 segundos
+        setTimeout(function() {
+            alert.style.display = "none";
+        }, 3000);
+    </script>
 
 
 </body>

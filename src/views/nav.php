@@ -28,7 +28,7 @@
             </li>
 
             <li class="nav-item mt-5 rounded-pill sign-out">
-                <a class="nav-link link-light text-center fw-bold" href="../../../index.php">
+                <a class="nav-link link-light text-center fw-bold" href="../../config/destroy.php">
                     <i class="bi bi-caret-left"></i>
                     CERRAR
                 </a>
