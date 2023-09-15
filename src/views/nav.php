@@ -5,7 +5,7 @@
             <li class="nav-item mb-2">
                 <a class="nav-link active link-dark" href="../site/home.php">
                     <i class="bi bi-house-door"></i>
-                    INICIO
+                    INICIOSS
                 </a>
             </li>
             <li class="nav-item mb-2">
