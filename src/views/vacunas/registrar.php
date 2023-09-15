@@ -12,7 +12,7 @@ $comentarios = $_POST['comentarios'];
 
 
 
-// Recupera los demás campos aquí
+// Recupera los demás campos aquí...
 
  $sql = "INSERT INTO historial (mascota_id, fecha_vacunacion, enfermedad, comentarios)
         VALUES ('$mascota', '$fechaVacunacion', '$enfermedad', '$comentarios')";

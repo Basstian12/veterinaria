@@ -30,7 +30,7 @@
             <li class="nav-item">
                 <a class="nav-link link-dark" href="../vacunas/vacunas.php">
                     <i class="fas fa-tasks"></i>
-                    VACUNA
+                    VACUNAS
                 </a>
             </li>
             <li class="nav-item mt-5 rounded-pill sign-out">
