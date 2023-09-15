@@ -5,7 +5,7 @@
             <li class="nav-item mb-2">
                 <a class="nav-link active link-dark" href="../site/home.php">
                     <i class="bi bi-house-door"></i>
-                    INICIOSS
+                    INICIO
                 </a>
             </li>
             <li class="nav-item mb-2">
@@ -30,7 +30,7 @@
             <li class="nav-item">
                 <a class="nav-link link-dark" href="../vacunas/vacunas.php">
                     <i class="fas fa-tasks"></i>
-                    VACUNAS
+                    VACUNA
                 </a>
             </li>
             <li class="nav-item mt-5 rounded-pill sign-out">
