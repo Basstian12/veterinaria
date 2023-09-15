@@ -37,7 +37,7 @@
 
         </div>
         <div class="text-center">
-            <h2 class="text-center fw-bold logo">HUELLITAS</h2>
+            <h2 class="text-center fw-bold logo">HUELLITAS...</h2>
         </div>
 
     </div>
