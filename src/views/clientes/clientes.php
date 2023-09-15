@@ -59,7 +59,7 @@
                 <div class="container">
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <i class="bi bi-person-plus"></i> Nuevo cliente
+                        <i class="bi bi-person-plus"></i> Nuevos clientes
                     </button>
 
                     <!-- Modal -->
