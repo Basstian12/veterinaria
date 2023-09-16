@@ -20,6 +20,13 @@
                     MASCOTAS
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link link-dark" href="../vacunas/vacunas.php">
+                    <i class="fas fa-tasks"></i>
+                    VACUNAS
+                </a>
+            </li>
+
             <li class="nav-item mb-2">
                 <a class="nav-link link-dark" href="#">
                     <i class="fas fa-clock"></i>

@@ -101,26 +101,59 @@
                                             });
                                         </script>
 
+                                        <!-- generacion de codigo automaticamente -->
+                                        <?php
+                                        function generarCodigoMascota()
+                                        {
+                                            // Definir un conjunto de caracteres permitidos para el código
+                                            $caracteresPermitidos = 'MPGCRB123456789';
+
+                                            // Definir la longitud del código (ajusta según tus necesidades)
+                                            $longitudCodigo = 8;
+
+                                            // Inicializar una variable para almacenar el código generado
+                                            $codigoMascota = '';
+
+                                            // Generar el código de usuario
+                                            for ($i = 0; $i < $longitudCodigo; $i++) {
+                                                $codigoMascota .= $caracteresPermitidos[rand(0, strlen($caracteresPermitidos) - 1)];
+                                            }
+
+                                            return $codigoMascota;
+                                        }
+
+                                        // Llamar a la función para generar el código de usuario
+                                        $mascotaCodigo = generarCodigoMascota();
+                                        ?>
+
+
+                                        <!-- script para convertir minusculas a mayusculas -->
+                                        <script>
+                                            function convertirAMayusculas(input) {
+                                                input.value = input.value.toUpperCase();
+                                            }
+                                        </script>
+
 
                                         <div class="mb-3">
                                             <label for="codigoMascota" class="form-label">Código Mascota</label>
-                                            <input type="text" class="form-control" id="codigoMascota" name="codigoMascota" required placeholder="@P01">
+                                            <input type="text" id="codigo" class="form-control" name="codigoMascota" value="<?php echo $mascotaCodigo; ?>" readonly>
                                         </div>
                                         <div class="mb-3">
                                             <label for="nombre" class="form-label">Nombre</label>
-                                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                            <input type="text" class="form-control" id="nombre" name="nombre" required oninput="convertirAMayusculas(this)">
                                         </div>
                                         <div class="mb-3">
                                             <label for="especie" class="form-label">Especie</label>
-                                            <input type="text" class="form-control" id="especie" name="especie" required placeholder="Perro-Gato...">
+                                            <input type="text" class="form-control" id="especie" name="especie" required oninput="convertirAMayusculas(this)">
                                         </div>
                                         <div class="mb-3">
                                             <label for="raza" class="form-label">Raza</label>
-                                            <input type="text" class="form-control" id="raza" name="raza" required>
+                                            <input type="text" class="form-control" id="raza" name="raza" required oninput="convertirAMayusculas(this)">
                                         </div>
                                         <div class="mb-3">
                                             <label for="colorPelo" class="form-label">Color de Pelo</label>
-                                            <input type="text" class="form-control" id="colorPelo" name="colorPelo" required>
+                                            <input type="text" class="form-control" id="colorPelo" name="colorPelo" required oninput="convertirAMayusculas(this)">
                                         </div>
                                         <div class="mb-3">
                                             <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
@@ -137,6 +170,9 @@
                                         <button type="submit" class="btn btn-primary">Registrar Mascota</button>
                                     </form>
                                 </div>
+
+
+
                                 <script>
                                     $(document).ready(function() {
                                         $('#registroMascota').submit(function(e) {
@@ -218,10 +254,16 @@
                                         echo "<td>" . $row["nombre_cliente"] . "</td>";
                                         echo "<td><a href='contactos.php?id=" . $row['id_mascota'] . "' class='btn btn-info'><i class='bi bi-eye'></i></a> </td>";
                                         echo "<td><a href='historial.php?id=" . $row['id_mascota'] . "' class='btn btn-primary'><i class='bi bi-eye'></i></a> </td>";
-                                        echo "<td>
-                                    <a href='' class='btn btn-info'><i class='bi bi-pencil-square'></i></a>
-                                    <a href='' class='btn btn-danger'><i class='bi bi-trash'></i></a>
-                                    </td>";
+                                        echo '<td>
+                                    <div class="d-flex container align-items-center">
+                                      <div class="col-md-6 col-sm-12">
+                                      <a href="update.php?id=' . $row['id_mascota'] . '" class="btn btn-info"><i class="bi bi-pencil-square"></i></a>
+                                      </div>
+                                      <div class="col-md-6 col-sm-12">
+                                       <button class="btn btn-danger eliminar_mascota" data-id="' . $row['id_mascota'] . '"><i class="bi bi-trash3"></i></button>
+                                      </div>
+                                    </div>
+                                    </td>';
 
                                         echo "</tr>";
                                     }
@@ -243,23 +285,11 @@
 
 
 
-    <script>
-        const mostrarIcono = document.getElementById("mostrarIcono");
-        const ocultarIcono = document.getElementById("ocultarIcono");
-        const miDiv = document.getElementById("miDiv");
+    <!-- para sweet alert en los botones -->
 
-        mostrarIcono.addEventListener("click", function() {
-            miDiv.style.display = "block";
-            mostrarIcono.classList.add("d-none");
-            ocultarIcono.classList.remove("d-none");
-        });
-
-        ocultarIcono.addEventListener("click", function() {
-            miDiv.style.display = "none";
-            ocultarIcono.classList.add("d-none");
-            mostrarIcono.classList.remove("d-none");
-        });
-    </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- para los botones y registros --> 
+    <script src="../../js/scripts.js"></script>
 
 </body>
 

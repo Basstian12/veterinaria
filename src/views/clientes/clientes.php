@@ -57,6 +57,35 @@
                 </div>
                 <!-- Aquí va el contenido de la página -->
                 <div class="container">
+
+                    <!-- generacion de codigo automaticamente para los clientes -->
+
+                    <?php
+                    function generarCodigoUsuario()
+                    {
+                        // Definir un conjunto de caracteres permitidos para el código
+                        $caracteresPermitidos = 'CNHS123456789';
+
+                        // Definir la longitud del código (ajusta según tus necesidades)
+                        $longitudCodigo = 8;
+
+                        // Inicializar una variable para almacenar el código generado
+                        $codigoUsuario = '';
+
+                        // Generar el código de usuario
+                        for ($i = 0; $i < $longitudCodigo; $i++) {
+                            $codigoUsuario .= $caracteresPermitidos[rand(0, strlen($caracteresPermitidos) - 1)];
+                        }
+
+                        return $codigoUsuario;
+                    }
+
+                    // Llamar a la función para generar el código de usuario
+                    $usuarioCodigo = generarCodigoUsuario();
+                    ?>
+
+
+
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <i class="bi bi-person-plus"></i> Nuevo cliente
@@ -73,8 +102,8 @@
                                 <div class="modal-body">
                                     <form>
                                         <div class="mb-3">
-                                            <label for="codigo" class="form-label">Código</label>
-                                            <input type="text" class="form-control" id="codigo" name="codigo" required placeholder="@HERNANDEZ01">
+                                            <label for="codigo" class="form-label">Código de cliente</label>
+                                            <input type="text" id="codigo" class="form-control" name="codigo" value="<?php echo $usuarioCodigo; ?>" readonly>
                                         </div>
                                         <div class="mb-3">
                                             <label for="nombre" class="form-label">Nombre Completo</label>
@@ -158,7 +187,7 @@
                 <?php
 
 
-                $sql = "SELECT codigo, nombre, correo, telefono FROM clientes";
+                $sql = "SELECT id,codigo, nombre, correo, telefono FROM clientes";
                 $result = $conn->query($sql);
 
                 ?>
@@ -185,10 +214,16 @@
                                     echo "<td>" . $row["nombre"] . "</td>";
                                     echo "<td>" . $row["correo"] . "</td>";
                                     echo "<td>" . $row["telefono"] . "</td>";
-                                    echo "<td>
-                                    <a href='' class='btn btn-info'><i class='bi bi-pencil-square'></i></a>
-                                    <a href='' class='btn btn-danger'><i class='bi bi-trash'></i></a>
-                                    </td>";
+                                    echo '<td>
+                                    <div class="d-flex container align-items-center">
+                                      <div class="col-md-6 col-sm-12">
+                                      <a href="update.php?id=' . $row['id'] . '" class="btn btn-info"><i class="bi bi-pencil-square"></i></a>
+                                      </div>
+                                      <div class="col-md-6 col-sm-12">
+                                       <button class="btn btn-danger eliminar" data-id="' . $row['id'] . '"><i class="bi bi-trash3"></i></button>
+                                      </div>
+                                    </div>
+                                    </td>';
 
                                     echo "</tr>";
                                 }
@@ -207,24 +242,11 @@
 
 
 
+<!-- para sweet alert en los botones -->
 
-    <script>
-        const mostrarIcono = document.getElementById("mostrarIcono");
-        const ocultarIcono = document.getElementById("ocultarIcono");
-        const miDiv = document.getElementById("miDiv");
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../../js/scripts.js"></script>
 
-        mostrarIcono.addEventListener("click", function() {
-            miDiv.style.display = "block";
-            mostrarIcono.classList.add("d-none");
-            ocultarIcono.classList.remove("d-none");
-        });
-
-        ocultarIcono.addEventListener("click", function() {
-            miDiv.style.display = "none";
-            ocultarIcono.classList.add("d-none");
-            mostrarIcono.classList.remove("d-none");
-        });
-    </script>
 
 </body>
 

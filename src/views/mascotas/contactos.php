@@ -107,9 +107,9 @@
                                         <div class="mb-3">
                                             <label for="clientes" class="form-label">Cliente:</label>
                                             <select class="form-select" id="clientes" name="clientes">
-
                                             </select>
                                         </div>
+
 
 
                                         <script>
@@ -142,7 +142,6 @@
                                         <div class="mb-3">
                                             <label for="resultados" class="form-label">Mascota:</label>
                                             <select class="form-select" id="mascotas" name="mascotas">
-
                                             </select>
                                         </div>
 
@@ -168,6 +167,10 @@
                                                 });
                                             });
                                         </script>
+                                        <div class="mb-3">
+                                            <label for="parentesco" class="form-label">Parentesco:</label>
+                                            <input type="text" class="form-control" name="parentesco">
+                                        </div>
 
 
                                         <button type="submit" class="btn btn-primary">Vincular</button>
@@ -258,7 +261,7 @@
 
                         $id = $_GET['id'];
 
-                        $sql = "SELECT clientes.nombre AS contacto_nombre, clientes.correo AS contacto_correo, 
+                        $sql = "SELECT  parentesco,clientes.nombre AS contacto_nombre, clientes.correo AS contacto_correo, 
                         clientes.telefono AS contacto_telefono
                          FROM contactos
                  JOIN clientes ON contactos.id_contactocliente = clientes.id
@@ -269,9 +272,6 @@
 
                         if ($consult->num_rows > 0) {
                             $row = $consult->fetch_assoc();
-                            $cliente = $row["contacto_nombre"];
-                            $clienteCorreo = $row["contacto_correo"];
-                            $clienteTelefono = $row["contacto_telefono"];
                         } else {
 
                             // Tu código PHP para realizar ciertas operaciones...
@@ -298,15 +298,15 @@
 
                         <div class="card w-25 me-2">
                             <div class="card-body">
-                                <h5 class="card-title">Personas vinculadas</h5>
-                                <label for="nombre" class="fw-bold">Nombre: </label>
-                                <p class="card-text"><?php echo $cliente ?></p>
-                                <label for="nombre" class="fw-bold">Correo: </label>
-                                <p class="card-text"><?php echo $clienteCorreo ?></p>
-                                <label for="nombre" class="fw-bold">Telefono: </label>
-                                <p class="card-text"><?php echo $clienteTelefono ?></p>
-
-
+                                        <h5 class="card-title">Personas vinculadas</h5>
+                                        <label for="nombre" class="fw-bold">Nombre: </label>
+                                        <p class="card-text"><?php echo $row['contacto_nombre'] ?></p>
+                                        <label for="nombre" class="fw-bold">Correo: </label>
+                                        <p class="card-text"><?php echo $row['contacto_correo'] ?></p>
+                                        <label for="nombre" class="fw-bold">Telefono: </label>
+                                        <p class="card-text"><?php echo $row['contacto_telefono'] ?></p>
+                                        <label for="nombre" class="fw-bold">Parentesco: </label>
+                                        <p class="card-text"><?php echo $row['parentesco'] ?></p>
                             </div>
                         </div>
 

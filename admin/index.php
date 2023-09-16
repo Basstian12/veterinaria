@@ -23,7 +23,7 @@
                     <div class="card-body">
                         <?php if (isset($_GET['error'])) { ?>
                             <div class="alert alert-danger" id="myAlert">
-                                <p>Hubo un error al ingresar, Verifique sus datos porfavor</p>
+                                <p>Datos incorrectos</p>
                             </div>
                         <?php } ?>
 
